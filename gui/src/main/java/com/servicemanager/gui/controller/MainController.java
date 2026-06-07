@@ -29,7 +29,6 @@ public class MainController implements ServiceObserver {
     @FXML private TextField workingDirField;
     @FXML private TextArea outputArea;
     @FXML private VBox mainView;
-    @FXML private VBox aboutPane;
     @FXML private VBox docPane;
     @FXML private WebView docWebView;
 
@@ -145,8 +144,6 @@ public class MainController implements ServiceObserver {
 
     @FXML
     private void handleDocumentation() {
-        aboutPane.setVisible(false);
-        aboutPane.setManaged(false);
         try {
             File readme = new File("../README.md");
             if (!readme.exists()) {
@@ -289,51 +286,11 @@ public class MainController implements ServiceObserver {
     }
 
     @FXML
-    private void handleAboutUs() {
-        docPane.setVisible(false);
-        docPane.setManaged(false);
-        aboutPane.setVisible(true);
-        aboutPane.setManaged(true);
-        mainView.setVisible(false);
-        mainView.setManaged(false);
-    }
-
-    @FXML
     private void handleBackToMain() {
-        aboutPane.setVisible(false);
-        aboutPane.setManaged(false);
         docPane.setVisible(false);
         docPane.setManaged(false);
         mainView.setVisible(true);
         mainView.setManaged(true);
-    }
-
-    @FXML
-    private void openSemionGitHub() {
-        openUrl("https://github.com/Sifer-crack");
-    }
-
-    @FXML
-    private void openSemionLinkedIn() {
-        openUrl("https://linkedin.com/in/semion-andreev");
-    }
-
-    @FXML
-    private void openRaheemGitHub() {
-        openUrl("https://github.com/raheem-khawaja");
-    }
-
-    @FXML
-    private void openRaheemLinkedIn() {
-        openUrl("https://linkedin.com/in/raheem-khawaja");
-    }
-
-    private void openUrl(String url) {
-        try {
-            Desktop.getDesktop().browse(URI.create(url));
-        } catch (Exception e) {
-            appendOutput("Could not open link: " + e.getMessage());
-        }
     }
 
     @FXML
